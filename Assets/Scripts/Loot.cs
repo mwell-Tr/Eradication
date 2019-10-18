@@ -8,12 +8,16 @@ public enum LootType {none, SmallHealth, LargeHealth, Weapon, Armor}
 public class Loot : MonoBehaviour {
 
     public LootType type;
+    public GameObject loot;
 
     private PlayerMovement target;
     private Damageable playersCombatStats;
+    private Vector3 spawnPosition;
 
     private void Start() {
-        // determine loot type
+
+        spawnPosition = transform.position;
+        type = (LootType) Random.Range(1, 5);
     }
 
     public void ProcessEffect(PlayerMovement target){
@@ -54,4 +58,11 @@ public class Loot : MonoBehaviour {
         Debug.LogWarning("Give Armor Not Implmented");
     }
 
+    public void SpawnLoot(){
+        Instantiate(loot, spawnPosition, transform.rotation, null);
+    }
+
+    public void SetSpawnPosition(Vector3 newPosition){
+        spawnPosition = newPosition;
+    }
 }

@@ -192,8 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 55
-  type: 1
-  Loot: {fileID: 2475482662160038754, guid: 92d48be1a6fb23a4babd2d7cee35ef4c, type: 3}
 --- !u!1 &3039562094388680435
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +341,7 @@ MonoBehaviour:
   projectile: {fileID: 7115567410869038639, guid: 0f22803766ccd0c4eb99536b1d9303ab,
     type: 3}
   data: {fileID: 11400000, guid: 6b15b5d30ae43d74d836157d11433394, type: 2}
+  p: {x: 0, y: 0, z: 0}
 --- !u!1 &3039562094388680441
 GameObject:
   m_ObjectHideFlags: 0

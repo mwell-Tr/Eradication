@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour {
     public void Start() {
 
         GetComponent<Rigidbody>().AddForce(transform.forward * data.TravelSpeed, ForceMode.Force);
+        Destroy(gameObject, 5.0f);
     }
     
     public void OnCollisionEnter(Collision collision) {        

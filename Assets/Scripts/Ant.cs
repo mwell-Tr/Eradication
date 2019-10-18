@@ -16,6 +16,7 @@ public class Ant : MonoBehaviour {
     public float maxChaseDistnace;
     public float attackRate;
 
+    private Loot loot;
     private Gun gun;
     private NavMeshAgent agent;
     private NavMeshHit navMeshHit;
@@ -30,14 +31,15 @@ public class Ant : MonoBehaviour {
     private void Start() {
 
         gun = GetComponent<Gun>();
+        loot = GetComponent<Loot>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         
         wanderDistance = UnityEngine.Random.Range(25.0f, 75.0f);
         distanceFromPlayer = 0;
         isChasing = false;
-        active = true;
-        
+        active = true;       
+
         target = GameObject.FindGameObjectWithTag("Player");
 
         StartCoroutine(PursueTarget());
@@ -102,9 +104,15 @@ public class Ant : MonoBehaviour {
 
     // modify values to prepare for death animation and the destroying of the game object
     public void StartDeath(){
-        active = false;
-        agent.SetDestination(transform.position);
-        animator.SetBool("Alive", false);
-        Destroy(gameObject, 5.0f);
+
+        if(active == true){
+
+            active = false;
+            agent.SetDestination(transform.position);
+            animator.SetBool("Alive", false);
+            loot.SetSpawnPosition(new Vector3(transform.position.x, transform.position.y + 5, transform.position.z));
+            loot.SpawnLoot();
+            Destroy(gameObject, 5.0f);
+        }
     }
 }
