@@ -7,6 +7,8 @@ using UnityEngine.AI;
 // Handle navigation commands, animation commands, and attacking the player
 // Adding a pause/stop wandering feature could be nice for debugging and testing
 
+// need loop component class to spawn the loot now
+
 public class Ant : MonoBehaviour {
 
     public GameObject target;
@@ -23,6 +25,7 @@ public class Ant : MonoBehaviour {
     private float distanceFromPlayer;
     private float wanderDistance;
     private bool isChasing;
+    private bool active;
 
     private void Start() {
 
@@ -33,6 +36,7 @@ public class Ant : MonoBehaviour {
         wanderDistance = UnityEngine.Random.Range(25.0f, 75.0f);
         distanceFromPlayer = 0;
         isChasing = false;
+        active = true;
         
         target = GameObject.FindGameObjectWithTag("Player");
 
@@ -41,7 +45,7 @@ public class Ant : MonoBehaviour {
 
     private IEnumerator PursueTarget() {
 
-        while (true) {
+        while (active) {
 
             if (target != null) {
                 // has a valid target
@@ -94,5 +98,13 @@ public class Ant : MonoBehaviour {
                 yield return new WaitUntil(() => agent.remainingDistance < 0.5f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
             }
         }
+    }
+
+    // modify values to prepare for death animation and the destroying of the game object
+    public void StartDeath(){
+        active = false;
+        agent.SetDestination(transform.position);
+        animator.SetBool("Alive", false);
+        Destroy(gameObject, 5.0f);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 // Class/component that allows an object to attack another 
+// consider seperating enemy functionality 
 // rename variable p
 
 public class Gun : MonoBehaviour {
@@ -72,13 +73,3 @@ public class Gun : MonoBehaviour {
         canShoot = true;
     }
 }
-
-// player "pulls" trigger
-// bullet comes out
-
-// if single
-    // nothing
-// if auto fire
-    // set ready to shoot to true
-    // wait fore a delay in turns of fire rate
-    // loop back until player stops input/ammo/dead

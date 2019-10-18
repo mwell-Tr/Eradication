@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour {
         }
     }
 
-    // optimizatino consideration
+    // optimization consideration
     // instead of leaving the script and game object active find a way to leave the spawner always spawning and just control the spawner by 
     // setting the gameobject itself to active or not active
     // right now if it was in a update to check if spawning is true it would check that every frame where as if it always spawned no matter what it would actually

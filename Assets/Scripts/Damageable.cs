@@ -1,21 +1,13 @@
 ﻿using UnityEngine;
 
 // Class/component that allows for an object to take damage and to be removed once health is low enough
-// Update entity type once Ant has been renamed
-
-public enum EntityType { Player, Ant }
 
 public class Damageable : MonoBehaviour {
 
-    public int maxHealth;    
-    public EntityType type;
-    public GameObject Loot;
-
-    private int lootGenThreshold;
+    public int maxHealth;        
     private int health;
 
     private void Start() {
-        lootGenThreshold = Random.Range(0, 101);
         health = maxHealth;
     }
     
@@ -35,31 +27,8 @@ public class Damageable : MonoBehaviour {
         if (health > maxHealth) health = maxHealth;
     }
 
-    // allows for the any types to drop loop when they die
     private void KillSelf() {
-
-        switch (type) {
-            case EntityType.Ant:
-                Instantiate(Loot, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                break;
-                
-            default: Destroy(gameObject);
-                break;
-        }        
-    }
-
-    // spawn a loot item for the player to collect
-    // dependent upon a random number
-    private void DropLoot() {
-
-        if(Loot == null) return;
-
-        if (Random.Range(0, 101) >= lootGenThreshold) {
-            Instantiate(Loot, transform.position, Quaternion.identity);
-        }
-
-        Destroy(gameObject);
+        SendMessageUpwards("StartDeath", SendMessageOptions.RequireReceiver);
     }
 
     public int GetMaxHealth(){

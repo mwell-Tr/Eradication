@@ -10,9 +10,8 @@ public class Projectile : MonoBehaviour {
 
         GetComponent<Rigidbody>().AddForce(transform.forward * data.TravelSpeed, ForceMode.Force);
     }
-    public void OnCollisionEnter(Collision collision) {
-
-        Debug.Log("Bullet Collision with " + collision.gameObject.name);
+    
+    public void OnCollisionEnter(Collision collision) {        
 
         if (collision.gameObject.GetComponent<Damageable>() != null) {
             collision.gameObject.GetComponent<Damageable>().TakeDamage(data.Damage);
