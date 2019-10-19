@@ -4,17 +4,23 @@
 
 public class Damageable : MonoBehaviour {
 
+    public delegate void DamageTaken(int healthDisplayValue);
+    public event DamageTaken damageTaken;
+
     public int maxHealth;        
-    private int health;
+    private int currentHealth;
 
     private void Start() {
-        health = maxHealth;
+        currentHealth = maxHealth;
     }
     
     public void TakeDamage(int damageDealt) {
-        health -= damageDealt;
 
-        if (health <= 0) KillSelf();
+        currentHealth -= damageDealt;
+
+        if (damageTaken != null) damageTaken(GetCurrentHealth());
+
+        if (currentHealth <= 0) KillSelf();
     }
 
     public void RecieveHealth(float amount) {
@@ -22,13 +28,17 @@ public class Damageable : MonoBehaviour {
     }
 
     public void RecieveHealth(int amount) {
-        health += amount;
+        currentHealth += amount;
 
-        if (health > maxHealth) health = maxHealth;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     private void KillSelf() {
         SendMessageUpwards("StartDeath", SendMessageOptions.RequireReceiver);
+    }
+
+    public int GetCurrentHealth(){
+        return currentHealth;
     }
 
     public int GetMaxHealth(){

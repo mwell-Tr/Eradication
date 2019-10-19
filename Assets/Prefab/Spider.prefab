@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 6688117833166320355}
   - component: {fileID: 519377600348747876}
   - component: {fileID: 519377600348747877}
+  - component: {fileID: 547440161}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -342,6 +343,20 @@ MonoBehaviour:
     type: 3}
   data: {fileID: 11400000, guid: 6b15b5d30ae43d74d836157d11433394, type: 2}
   p: {x: 0, y: 0, z: 0}
+--- !u!114 &547440161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039562094388680437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d438333364490514cbaa589606c78c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  loot: {fileID: 2475482662160038754, guid: 92d48be1a6fb23a4babd2d7cee35ef4c, type: 3}
 --- !u!1 &3039562094388680441
 GameObject:
   m_ObjectHideFlags: 0

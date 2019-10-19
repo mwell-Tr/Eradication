@@ -577,7 +577,6 @@ MonoBehaviour:
   projectile: {fileID: 7115567410869038639, guid: 0f22803766ccd0c4eb99536b1d9303ab,
     type: 3}
   data: {fileID: 11400000, guid: 2de7321e01bd00146a2db9c0f1dd9515, type: 2}
-  FocalPoint: 39
   p: {x: 0, y: 0, z: 0}
 --- !u!114 &1596584680
 MonoBehaviour:
@@ -591,6 +590,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f2fa2bceea2f341b3bc9489f51dea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  type: 0
-  Loot: {fileID: 0}
+  maxHealth: 100
