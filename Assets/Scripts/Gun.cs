@@ -52,12 +52,6 @@ public class Gun : MonoBehaviour {
         }   
     }
 
-    public void ShootStinger(Vector3 targetPosition) {
-
-        newGO = Instantiate(projectile, barrelPoint.position, Quaternion.identity);
-        newGO.transform.LookAt(targetPosition);
-    }
-
     private void SpawnProjectile(){
         newGO = Instantiate(projectile, barrelPoint.transform.position, Quaternion.identity);
         newGO.transform.LookAt(p);

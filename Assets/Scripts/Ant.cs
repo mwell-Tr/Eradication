@@ -12,12 +12,12 @@ using UnityEngine.AI;
 public class Ant : MonoBehaviour {
 
     public GameObject target;
+    public GameObject DamageBox;
     public float maxAttackDistance;
     public float maxChaseDistnace;
     public float attackRate;
 
     private Loot loot;
-    private Gun gun;
     private NavMeshAgent agent;
     private NavMeshHit navMeshHit;
     private Vector3 desriedWanderTargetPoint;
@@ -29,8 +29,6 @@ public class Ant : MonoBehaviour {
     private bool active;
 
     private void Start() {
-
-        gun = GetComponent<Gun>();
         loot = GetComponent<Loot>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -39,6 +37,7 @@ public class Ant : MonoBehaviour {
         distanceFromPlayer = 0;
         isChasing = false;
         active = true;       
+        DamageBox.SetActive(false);
 
         target = GameObject.FindGameObjectWithTag("Player");
 
@@ -76,13 +75,15 @@ public class Ant : MonoBehaviour {
                 if (distanceFromPlayer < maxAttackDistance) {
                     // within attack radius
 
-                    // gun.ShootStinger(target.transform.position);
                     animator.SetBool("Attacking", true);
+                    DamageBox.SetActive(true);
 
-                    // becasue of the waiting, shooting causes a "delayed" update when it comes to chasing the player
-                    // might leave that in, will reconsider once balancing is relevant 
+                    // important to find a balanced number 
+                    // too long will cause extra animation loops to play
+                    // too short will cause more damage to trigger
                     yield return new WaitForSeconds(attackRate);
 
+                    DamageBox.SetActive(false);
                     animator.SetBool("Attacking", false);
                     animator.SetBool("Chasing", true);
                 }
