@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d1c47a098d4514aaa52023ec420e77, type: 3}
   m_Name: Gun 2
   m_EditorClassIdentifier: 
-  Damage: 0
+  mode: 0
+  Damage: 40
   TravelSpeed: 0
+  FireRate: 0

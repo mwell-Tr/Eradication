@@ -3,13 +3,13 @@
 // Class/component that allows for an object to take damage and to be removed once health is low enough
 
 public class Damageable : MonoBehaviour {
-
-    public delegate void DamageTaken(int healthDisplayValue);
-    public event DamageTaken damageTaken;
+    
+    public delegate void HealthChanged(int healthDisplayValue);
+    public event HealthChanged healthChanged;
 
     public int maxHealth;        
     private int currentHealth;
-
+    
     private void Start() {
         currentHealth = maxHealth;
     }
@@ -18,7 +18,7 @@ public class Damageable : MonoBehaviour {
 
         currentHealth -= damageDealt;
 
-        if (damageTaken != null) damageTaken(GetCurrentHealth());
+        if (healthChanged != null) healthChanged(GetCurrentHealth());
 
         if (currentHealth <= 0) KillSelf();
     }
@@ -31,6 +31,8 @@ public class Damageable : MonoBehaviour {
         currentHealth += amount;
 
         if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+        if (healthChanged != null) healthChanged(GetCurrentHealth());
     }
 
     private void KillSelf() {

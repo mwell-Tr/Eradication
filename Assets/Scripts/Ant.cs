@@ -9,6 +9,10 @@ using UnityEngine.AI;
 
 // need loop component class to spawn the loot now
 
+// maybe subscribe to player is dead event
+// only realy benefit is to go back to wandering but it may
+// already work witout needing an event to trigger it
+
 public class Ant : MonoBehaviour {
 
     public GameObject target;

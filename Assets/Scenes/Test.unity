@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1525.003, g: 2160.2134, b: 3440.6455, a: 1}
+  m_IndirectSpecularColor: {r: 1529.506, g: 2166.1948, b: 3448.228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -120,89 +120,13 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: f4f4378351233e74a9680eb7d9231e0d, type: 2}
---- !u!114 &207203934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df29e7cc05fbec4aa43e06ea875565d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  rotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
-  exposure:
-    m_OverrideState: 0
-    m_Value: 15
-  multiplier:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
-  updateMode:
-    m_OverrideState: 0
-    m_Value: 0
-  updatePeriod:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  includeSunInBaking:
-    m_OverrideState: 0
-    m_Value: 0
-  sunSize:
-    m_OverrideState: 0
-    m_Value: 0.04
-    min: 0
-    max: 1
-  sunSizeConvergence:
-    m_OverrideState: 0
-    m_Value: 5
-    min: 1
-    max: 10
-  atmosphereThickness:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 5
-  skyTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  groundColor:
-    m_OverrideState: 0
-    m_Value: {r: 0.369, g: 0.349, b: 0.341, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  enableSunDisk:
-    m_OverrideState: 0
-    m_Value: 0
 --- !u!43 &238245647
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21188
+  m_Name: pb_Mesh21196
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -407,18 +331,6 @@ Transform:
   m_Father: {fileID: 810915270}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &781665476 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 781665476, guid: da50f32d0aa92d0428e4f5d43921dfa5,
-    type: 3}
-  m_PrefabInstance: {fileID: 3616903833679366898}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &810915269
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: cf1b32335766f2e40a3d01fb915d6960, type: 2}
   m_StaticLightingSkyUniqueID: 2
-  m_SkySettings: {fileID: 207203934}
+  m_SkySettings: {fileID: 1787749400}
   m_SkySettingsFromProfile: {fileID: -7408721133138034335, guid: cf1b32335766f2e40a3d01fb915d6960,
     type: 2}
 --- !u!1 &914352403
@@ -881,26 +793,18 @@ Transform:
   m_Father: {fileID: 1050951699}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &991750810 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3616903834522323483, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+--- !u!114 &991750811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 991750811, guid: da50f32d0aa92d0428e4f5d43921dfa5,
     type: 3}
   m_PrefabInstance: {fileID: 3616903833679366898}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &991750811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991750810}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0a9076d9679e1049ba1c4cc0fed5616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRef: {fileID: 1596584671}
-  healthDisplay: {fileID: 781665476}
 --- !u!1 &1050951698
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +842,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21224
+  m_Name: pb_Mesh21228
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1361,6 +1265,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787749400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df29e7cc05fbec4aa43e06ea875565d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  sunSize:
+    m_OverrideState: 0
+    m_Value: 0.04
+    min: 0
+    max: 1
+  sunSizeConvergence:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 1
+    max: 10
+  atmosphereThickness:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 5
+  skyTint:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  groundColor:
+    m_OverrideState: 0
+    m_Value: {r: 0.369, g: 0.349, b: 0.341, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  enableSunDisk:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!43 &1845817429
 Mesh:
   m_ObjectHideFlags: 0
@@ -1759,6 +1739,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1596584671}
+    - target: {fileID: 549131629, guid: a1fd67b0c0cf454429c9e5af9313d0d4, type: 3}
+      propertyPath: damageData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b15b5d30ae43d74d836157d11433394,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1fd67b0c0cf454429c9e5af9313d0d4, type: 3}
 --- !u!1001 &3616903833679366898
@@ -1878,5 +1863,131 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 713956806402460049, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_Name
+      value: Try Again Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824913989421255429, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -111.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824913989421255429, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000024796
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824913989421255429, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 56.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824913989421255429, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 159.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196464086582070777, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927716854788688057, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927716854788688057, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927716854788688057, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927716854788688057, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927716854788688057, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 991750811}
+    - target: {fileID: 5927716854788688057, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927716854788688057, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_text
+      value: Try Again
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 36.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 36.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695490282625381582, guid: da50f32d0aa92d0428e4f5d43921dfa5,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8196464086582070777, guid: da50f32d0aa92d0428e4f5d43921dfa5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: da50f32d0aa92d0428e4f5d43921dfa5, type: 3}

@@ -1,20 +1,44 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameplayUI : MonoBehaviour{
 
-    public GameObject playerRef;
+    public GameObject aliveUI;
+    public GameObject deadUI;
+
     public TextMeshProUGUI healthDisplay;
 
-    private Damageable playerDamageable;
-
     private void Start(){
-        playerDamageable = GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>();
+        
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>().healthChanged += UpdatePlayerHealthValue;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().playerDied += DeadPlayerReaction;
 
-        playerDamageable.damageTaken += UpdatePlayerHealthValue;
+        SetupUI();
+    }
+
+    private void SetupUI(){
+        aliveUI.SetActive(true);
+        deadUI.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void UpdatePlayerHealthValue(int healthDisplayValue){
         healthDisplay.text = healthDisplayValue.ToString();
+    }
+
+    private void DeadPlayerReaction(){        
+        aliveUI.SetActive(false);
+        deadUI.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+    public void RestartLevel(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

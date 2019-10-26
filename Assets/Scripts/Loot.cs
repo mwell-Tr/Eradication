@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 // Class that manages the collectiable for the player that comes from fallen enemies
-// consider incorperating spawn function to make the componet independent 
 
 public enum LootType {none, SmallHealth, LargeHealth, Weapon, Armor}
 

@@ -4,6 +4,9 @@
 
 public class PlayerMovement : MonoBehaviour {
 
+    public delegate void PlayerDied();
+    public event PlayerDied playerDied;
+
     public float normalMoveSpeed;
     public float strafeMoveSpeed;
     public float jumpForce;
@@ -15,7 +18,9 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpInput;
     private float gravity;
     private float currentDeltaTime;
-    private float jumpVelocity;    private bool shootGun;
+    private float jumpVelocity;    
+    private bool shootGun;
+    private bool allowedToMove;
 
     private Gun gun;
     private Camera mainCamera;
@@ -29,13 +34,14 @@ public class PlayerMovement : MonoBehaviour {
         mainCamera = Camera.main;
         gravity = 200.0f;
         jumpVelocity = 0f;
+        allowedToMove = true;
     }
 
     private void Update() {
 
         UpdateInputValues();
         UpdateRotation();
-        MovePlayer();
+        if(allowedToMove) MovePlayer();
 
         if (Input.GetKey(KeyCode.LeftControl)) gun.pullTrigger();
         if (Input.GetKeyUp(KeyCode.LeftControl)) gun.releaseTrigger();
@@ -85,5 +91,10 @@ public class PlayerMovement : MonoBehaviour {
             hit.gameObject.GetComponent<Loot>().ProcessEffect(this);
             Destroy(hit.gameObject);
         }
+    }
+
+    private void StartDeath(){        
+        if (playerDied != null) playerDied();        
+        allowedToMove = false;
     }
 }
