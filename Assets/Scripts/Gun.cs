@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 
-// Class/component that allows an object to attack another 
-// consider seperating enemy functionality 
-// rename variable p
+// Class/component that allows the player to attack another object
 
 public class Gun : MonoBehaviour {
 
     public Transform barrelPoint;
     public GameObject projectile;
     public GunData data;
-    public Vector3 p;
-
+    
+    private  Vector3 targetPoint;
     private Camera mainCamera;
     private RaycastHit hitInfo;
     private GameObject newGO;    
@@ -24,15 +22,15 @@ public class Gun : MonoBehaviour {
 
     private void Update() {        
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hitInfo, 1000)){
-            p = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, hitInfo.distance));
+            targetPoint = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, hitInfo.distance));
         }else {
-            p = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1000));
+            targetPoint = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1000));
         }
     }
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(p, 1);
+        Gizmos.DrawWireSphere(targetPoint, 1);
     }
 
     private void ShootWeapon() {
@@ -54,7 +52,7 @@ public class Gun : MonoBehaviour {
 
     private void SpawnProjectile(){
         newGO = Instantiate(projectile, barrelPoint.transform.position, Quaternion.identity);
-        newGO.transform.LookAt(p);
+        newGO.transform.LookAt(targetPoint);
     }
 
     public void pullTrigger(){

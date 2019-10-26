@@ -2,18 +2,15 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-// Need to remain to something more fitting
 // Class for the primary enemy 
 // Handle navigation commands, animation commands, and attacking the player
 // Adding a pause/stop wandering feature could be nice for debugging and testing
-
-// need loop component class to spawn the loot now
 
 // maybe subscribe to player is dead event
 // only realy benefit is to go back to wandering but it may
 // already work witout needing an event to trigger it
 
-public class Ant : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
     public GameObject target;
     public GameObject DamageBox;

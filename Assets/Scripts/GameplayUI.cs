@@ -2,6 +2,8 @@
 using UnityEngine.SceneManagement;
 using TMPro;
 
+// Core logic of the UI that will be used during gameplay.
+
 public class GameplayUI : MonoBehaviour{
 
     public GameObject aliveUI;

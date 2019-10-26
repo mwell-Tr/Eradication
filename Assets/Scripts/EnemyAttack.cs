@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// Component that initiates the damage process when the enemy does damage
+
 public class EnemyAttack : MonoBehaviour{
 
     public GunData damageData;
