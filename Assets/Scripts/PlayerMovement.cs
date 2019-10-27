@@ -43,8 +43,9 @@ public class PlayerMovement : MonoBehaviour {
         UpdateRotation();
         if(allowedToMove) MovePlayer();
 
-        if (Input.GetKey(KeyCode.LeftControl)) gun.pullTrigger();
-        if (Input.GetKeyUp(KeyCode.LeftControl)) gun.releaseTrigger();
+        if (Input.GetKey(KeyCode.LeftControl)) gun.PullTrigger();
+        if (Input.GetKeyUp(KeyCode.LeftControl)) gun.ReleaseTrigger();
+        if (Input.GetKeyDown(KeyCode.R)) gun.Reload();
     }
 
     private void UpdateInputValues() {

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Gun 2
   m_EditorClassIdentifier: 
   mode: 0
-  Damage: 40
+  Damage: 1
   TravelSpeed: 0
   FireRate: 0
+  FireSound: {fileID: 0}

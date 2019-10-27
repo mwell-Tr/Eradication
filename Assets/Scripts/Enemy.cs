@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour {
     private Vector3 desriedWanderTargetPoint;
     private Vector3 actualWanderTargetPoint;
     private Animator animator;
+    private AudioSource audioSource;
     private float distanceFromPlayer;
     private float wanderDistance;
     private bool isChasing;
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour {
         loot = GetComponent<Loot>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         
         wanderDistance = UnityEngine.Random.Range(25.0f, 75.0f);
         distanceFromPlayer = 0;
@@ -42,7 +44,7 @@ public class Enemy : MonoBehaviour {
 
         target = GameObject.FindGameObjectWithTag("Player");
 
-        StartCoroutine(PursueTarget());
+        StartCoroutine("PursueTarget");
     }
 
     private IEnumerator PursueTarget() {
@@ -99,7 +101,8 @@ public class Enemy : MonoBehaviour {
                 agent.SetDestination(navMeshHit.position);
 
                 // would like to find alternatives to updating Vector3.Distance and maintaing the same functionality
-                yield return new WaitUntil(() => agent.remainingDistance < 0.5f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
+
+                if(active) yield return new WaitUntil(() => agent.remainingDistance < 0.5f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
             }
         }
     }
@@ -108,13 +111,15 @@ public class Enemy : MonoBehaviour {
     public void StartDeath(){
 
         if(active == true){
+            StopCoroutine("PursueTarget");
 
-            active = false;
-            agent.SetDestination(transform.position);
+            active = false;            
+            agent.isStopped = true;
             animator.SetBool("Alive", false);
+            audioSource.Play();
             loot.SetSpawnPosition(new Vector3(transform.position.x, transform.position.y + 5, transform.position.z));
             loot.SpawnLoot();
-            Destroy(gameObject, 5.0f);
+            Destroy(gameObject, 3.0f);
         }
     }
 }

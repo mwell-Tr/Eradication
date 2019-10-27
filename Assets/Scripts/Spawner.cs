@@ -10,8 +10,7 @@ public class Spawner : MonoBehaviour {
     public float waveInterval;
     public float spawnDelay;
     public Transform[] spawnPoints;
-
-    [Range(1, 4)]
+    
     public int spawnCount;
 
     private int spawnIndex;
@@ -35,11 +34,11 @@ public class Spawner : MonoBehaviour {
 
     private IEnumerator SpawnEnemies() {
 
-        while (spawning == true) {
-
-            spawnIndex = Random.Range(0, spawnPoints.Length - 1);
+        while (spawning == true) {            
 
             for (int i = 0; i < spawnCount; i++) {
+                
+                spawnIndex = Random.Range(0, spawnPoints.Length);
 
                 Instantiate(spawnee, spawnPoints[spawnIndex].position, Quaternion.identity);
                 yield return new WaitForSecondsRealtime(spawnDelay);

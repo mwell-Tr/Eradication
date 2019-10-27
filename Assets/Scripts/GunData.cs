@@ -11,5 +11,8 @@ public class GunData : ScriptableObject {
     public FireMode mode;
     public int Damage;
     public int TravelSpeed;
+    public int AmmoCapacity;
+    public float ReloadTime;
     public float FireRate;
+    public AudioClip FireSound;
 }
