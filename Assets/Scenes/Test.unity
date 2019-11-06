@@ -426,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: cf1b32335766f2e40a3d01fb915d6960, type: 2}
   m_StaticLightingSkyUniqueID: 2
-  m_SkySettings: {fileID: 1896947834}
+  m_SkySettings: {fileID: 2020375992}
   m_SkySettingsFromProfile: {fileID: -7408721133138034335, guid: cf1b32335766f2e40a3d01fb915d6960,
     type: 2}
 --- !u!1 &914352403
@@ -1524,7 +1524,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1896947834
+--- !u!114 &2020375992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1681,6 +1681,38 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnDelay
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 140193611, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -33.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 140193611, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -54.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 957662409, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 957662409, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -48.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358834364, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358834364, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507057649, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507057649, guid: 203760f03833dc742a29c540e0371b32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 203760f03833dc742a29c540e0371b32, type: 3}

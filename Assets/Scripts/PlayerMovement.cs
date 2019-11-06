@@ -89,8 +89,7 @@ public class PlayerMovement : MonoBehaviour {
     private void OnControllerColliderHit(ControllerColliderHit hit) {
 
         if(hit.gameObject.CompareTag("Loot")){
-            hit.gameObject.GetComponent<Loot>().ProcessEffect(this);
-            Destroy(hit.gameObject);
+            hit.gameObject.GetComponent<Loot>().ProcessEffect(this);            
         }
     }
 

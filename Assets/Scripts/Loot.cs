@@ -7,19 +7,30 @@ public enum LootType {none, SmallHealth, LargeHealth, Weapon, Armor}
 public class Loot : MonoBehaviour {
 
     public LootType type;
-    public GameObject loot;
 
     private PlayerMovement target;
     private Damageable playersCombatStats;
     private Vector3 spawnPosition;
+    private AudioSource audioSource;
+    private MeshCollider meshCollider;
+    private MeshRenderer meshRenderer;
 
     private void Start() {
 
         spawnPosition = transform.position;
+        audioSource = GetComponent<AudioSource>();
+        meshCollider = GetComponent<MeshCollider>();
+        meshRenderer = GetComponent<MeshRenderer>();
         type = (LootType) Random.Range(1, 5);
     }
 
     public void ProcessEffect(PlayerMovement target){
+        PlaySoundEffect();
+
+        meshCollider.enabled = false;
+        meshRenderer.enabled = false;
+        Destroy(gameObject, 1.0f);
+
 
         this.target = target;
         playersCombatStats = target.GetComponent<Damageable>();
@@ -57,11 +68,7 @@ public class Loot : MonoBehaviour {
         Debug.LogWarning("Give Armor Not Implmented");
     }
 
-    public void SpawnLoot(){
-        Instantiate(loot, spawnPosition, transform.rotation, null);
-    }
-
-    public void SetSpawnPosition(Vector3 newPosition){
-        spawnPosition = newPosition;
+    private void PlaySoundEffect(){
+        audioSource.Play();
     }
 }

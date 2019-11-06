@@ -17,8 +17,8 @@ public class Enemy : MonoBehaviour {
     public float maxAttackDistance;
     public float maxChaseDistnace;
     public float attackRate;
+    public GameObject loot;
 
-    private Loot loot;
     private NavMeshAgent agent;
     private NavMeshHit navMeshHit;
     private Vector3 desriedWanderTargetPoint;
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour {
     private bool active;
 
     private void Start() {
-        loot = GetComponent<Loot>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -117,8 +116,8 @@ public class Enemy : MonoBehaviour {
             agent.isStopped = true;
             animator.SetBool("Alive", false);
             audioSource.Play();
-            loot.SetSpawnPosition(new Vector3(transform.position.x, transform.position.y + 5, transform.position.z));
-            loot.SpawnLoot();
+
+            Instantiate(loot, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), Quaternion.identity);
             Destroy(gameObject, 3.0f);
         }
     }
