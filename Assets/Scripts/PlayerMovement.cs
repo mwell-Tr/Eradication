@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpVelocity;    
     private bool shootGun;
     private bool allowedToMove;
+    private bool PlayerAcquiredRetrievalObject;
 
     private Gun gun;
     private Camera mainCamera;
@@ -29,12 +30,15 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Start() {
 
+        RetrievalObject.objectPickedUp += consumePlayerPickUp;
+
         cc = gameObject.GetComponent<CharacterController>();
         gun = gameObject.GetComponent<Gun>();
         mainCamera = Camera.main;
         gravity = 200.0f;
         jumpVelocity = 0f;
         allowedToMove = true;
+        PlayerAcquiredRetrievalObject = false;
     }
 
     private void Update() {
@@ -96,5 +100,13 @@ public class PlayerMovement : MonoBehaviour {
     private void StartDeath(){        
         if (playerDied != null) playerDied();        
         allowedToMove = false;
+    }
+
+    private void consumePlayerPickUp(){
+        PlayerAcquiredRetrievalObject = true;
+    }
+
+    public bool hasPlayerAcquiredRetrievalObject(){ 
+        return PlayerAcquiredRetrievalObject;
     }
 }

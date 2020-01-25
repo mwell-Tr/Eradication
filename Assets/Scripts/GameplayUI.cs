@@ -14,7 +14,10 @@ public class GameplayUI : MonoBehaviour{
     public TextMeshProUGUI ammoDisplay;
 
     private void Start(){
-        
+
+        // could probably make the event static so that 
+        // the event can be found without the use of 
+        // FindGameObjectWithTag
         GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>().healthChanged += UpdatePlayerHealthValue;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().playerDied += DeadPlayerReaction;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Gun>().reloadingStart += ShowReloadingText;

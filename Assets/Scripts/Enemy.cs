@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour {
             animator.SetBool("Alive", false);
             audioSource.Play();
 
-            Instantiate(loot, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), Quaternion.identity);
+            Instantiate(loot, new Vector3(transform.position.x, transform.position.y + 15, transform.position.z), Quaternion.identity);
             Destroy(gameObject, 3.0f);
         }
     }
