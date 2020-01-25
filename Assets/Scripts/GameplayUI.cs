@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -10,11 +11,21 @@ public class GameplayUI : MonoBehaviour{
     public GameObject aliveUI;
     public GameObject deadUI;    
     public GameObject progressUI;
+    public GameObject transparentUI;
 
     public GameObject reloadingTxt;    
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI ammoDisplay;
     public TextMeshProUGUI variableStatusText;
+    public Image transparentPanel;
+
+    private Color originalColor;
+    private Color targetColor;
+    private bool colorTransitioning;
+
+    float lerpDuration = 4f; //The length of time your Lerp takes in seconds.
+    float currentLerpTime = 0f; //How far into your Lerp you are.
+
 
     private void Start(){
 
@@ -31,6 +42,10 @@ public class GameplayUI : MonoBehaviour{
         SafeArea.missionComplete += showMissionCompleteText;
 
         SetupUI();
+
+        originalColor = transparentPanel.color;
+        targetColor = new Color(0,0,0,1);
+        colorTransitioning = true;
     }
 
     private void SetupUI(){
@@ -76,9 +91,30 @@ public class GameplayUI : MonoBehaviour{
         progressUI.SetActive(false);
     }
 
+    IEnumerator FadeToBlack() {       
+
+        while(colorTransitioning) {
+            Debug.Log("Started");
+
+            currentLerpTime += Time.deltaTime;
+
+            if(currentLerpTime > lerpDuration){ 
+                currentLerpTime = lerpDuration;
+            }
+
+            float lerpPosition = currentLerpTime / lerpDuration;            
+
+            transparentPanel.color = Color.Lerp(originalColor, targetColor, lerpPosition);
+
+            if (Color.Equals(transparentPanel.color, targetColor)) colorTransitioning = false;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     private void showMissionCompleteText() {        
         progressUI.SetActive(true);
         variableStatusText.text = "You did it! Job well done!";
+        StartCoroutine(FadeToBlack());
     }
 
     public void RestartLevel(){
