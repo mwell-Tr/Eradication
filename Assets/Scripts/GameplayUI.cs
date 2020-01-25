@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -8,10 +9,12 @@ public class GameplayUI : MonoBehaviour{
 
     public GameObject aliveUI;
     public GameObject deadUI;    
+    public GameObject progressUI;
 
-    public GameObject reloadingTxt;
+    public GameObject reloadingTxt;    
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI ammoDisplay;
+    public TextMeshProUGUI variableStatusText;
 
     private void Start(){
 
@@ -23,6 +26,9 @@ public class GameplayUI : MonoBehaviour{
         GameObject.FindGameObjectWithTag("Player").GetComponent<Gun>().reloadingStart += ShowReloadingText;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Gun>().reloadingEnd += HideReloadingText;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Gun>().ammoChanged += UpdatePlayerAmmoValue;
+
+        RetrievalObject.objectPickedUp += ShowPlayerPickUpText;
+        SafeArea.missionComplete += showMissionCompleteText;
 
         SetupUI();
     }
@@ -58,6 +64,21 @@ public class GameplayUI : MonoBehaviour{
         Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+    }
+
+    private void ShowPlayerPickUpText(){
+        progressUI.SetActive(true);
+        StartCoroutine(HideStatusText());
+    }
+
+    IEnumerator HideStatusText(){ 
+        yield return new WaitForSeconds(5.0f);
+        progressUI.SetActive(false);
+    }
+
+    private void showMissionCompleteText() {        
+        progressUI.SetActive(true);
+        variableStatusText.text = "You did it! Job well done!";
     }
 
     public void RestartLevel(){

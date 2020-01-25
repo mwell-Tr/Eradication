@@ -12,8 +12,7 @@ public class RetrievalObject : MonoBehaviour{
 
             if(objectPickedUp != null) objectPickedUp();
 
-            // update player variable
-            // update spawners here
+            // update spawners
             // update ui            
             
             Destroy(gameObject);
