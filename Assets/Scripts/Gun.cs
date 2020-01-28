@@ -8,23 +8,24 @@ public class Gun : MonoBehaviour {
     public delegate void ReloadingStart();
     public delegate void ReloadingEnd();
     public delegate void AmmoChanged(int AmmoDisplayValue);
-    public event ReloadingStart reloadingStart;
-    public event ReloadingEnd reloadingEnd;
-    public event AmmoChanged ammoChanged;
+    public static event ReloadingStart reloadingStart;
+    public static event ReloadingEnd reloadingEnd;
+    public static event AmmoChanged ammoChanged;
 
     public Transform barrelPoint;
     public GameObject projectile;
-    public GunData data;
+    public GunData data;   
     
-    private  Vector3 targetPoint;
-    private Camera mainCamera;
-    private RaycastHit hitInfo;
-    private GameObject newGO;    
-    private AudioSource audioSource;
     private bool canShoot;
     private bool isReloading;
     private float timeSinceLastBullet;
     private int currentBullets;
+
+    private Vector3 targetPoint;
+    private Camera mainCamera;
+    private RaycastHit hitInfo;
+    private GameObject newProjectile;
+    private AudioSource audioSource;
 
     private void Start() {
         mainCamera = Camera.main;
@@ -66,11 +67,13 @@ public class Gun : MonoBehaviour {
     }
 
     private void SpawnProjectile(){
-        newGO = Instantiate(projectile, barrelPoint.transform.position, Quaternion.identity);
+        newProjectile = Instantiate(projectile, barrelPoint.transform.position, Quaternion.identity);
+        newProjectile.GetComponent<Projectile>().setGunData(data);
+        newProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * data.TravelSpeed, ForceMode.Force);
+        newProjectile.transform.LookAt(targetPoint);
         currentBullets -= 1;
         if(ammoChanged != null) ammoChanged(currentBullets);        
-        audioSource.Play();
-        newGO.transform.LookAt(targetPoint);
+        audioSource.Play();        
     }
 
     public void PullTrigger(){

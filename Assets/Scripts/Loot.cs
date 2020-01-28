@@ -10,14 +10,12 @@ public class Loot : MonoBehaviour {
 
     private PlayerMovement target;
     private Damageable playersCombatStats;
-    private Vector3 spawnPosition;
     private AudioSource audioSource;
     private MeshCollider meshCollider;
     private MeshRenderer meshRenderer;
 
     private void Start() {
 
-        spawnPosition = transform.position;
         audioSource = GetComponent<AudioSource>();
         meshCollider = GetComponent<MeshCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
@@ -28,9 +26,7 @@ public class Loot : MonoBehaviour {
         PlaySoundEffect();
 
         meshCollider.enabled = false;
-        meshRenderer.enabled = false;
-        Destroy(gameObject, 1.0f);
-
+        meshRenderer.enabled = false;        
 
         this.target = target;
         playersCombatStats = target.GetComponent<Damageable>();
@@ -49,6 +45,8 @@ public class Loot : MonoBehaviour {
             default: Debug.LogError("Invalid Loot Type");
                 break;
         }
+
+        Destroy(gameObject, 1.3f);
     }
 
     private void GiveSmallHealth(){

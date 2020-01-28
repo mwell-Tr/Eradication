@@ -4,11 +4,9 @@
 
 public class Projectile : MonoBehaviour {
 
-    public GunData data;
+    private GunData data;
 
-    public void Start() {
-
-        GetComponent<Rigidbody>().AddForce(transform.forward * data.TravelSpeed, ForceMode.Force);
+    public void Start() {        
         Destroy(gameObject, 5.0f);
     }
     
@@ -18,5 +16,9 @@ public class Projectile : MonoBehaviour {
             collision.gameObject.GetComponent<Damageable>().TakeDamage(data.Damage);
             Destroy(gameObject);
         }
+    }
+
+    public void setGunData(GunData newData){ 
+        data = newData;
     }
 }
