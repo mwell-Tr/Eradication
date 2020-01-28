@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-// Class that manages the collectiable for the player that comes from fallen enemies
+// Class that manages the collectibles for the player that comes from fallen enemies
 
 public enum LootType {none, SmallHealth, LargeHealth, Weapon, Armor}
 
