@@ -10,42 +10,43 @@ public class GameplayUI : MonoBehaviour{
 
     public GameObject aliveUI;
     public GameObject deadUI;    
-    public GameObject progressUI;
+    public GameObject objectiveUI;
     public GameObject transparentUI;
 
     public GameObject reloadingTxt;    
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI ammoDisplay;
-    public TextMeshProUGUI variableStatusText;
+    public TextMeshProUGUI objectiveText;
     public Image transparentPanel;
-
+    
+    private bool fading;
+    private float objectiveDisplayTimer;
+    private float lerpDuration;     
+    private float lerpPosition;
+    private float currentLerpTime;
     private Color originalColor;
     private Color targetColor;
-    private bool colorTransitioning;
-
-    float lerpDuration = 4f; //The length of time your Lerp takes in seconds.
-    float currentLerpTime = 0f; //How far into your Lerp you are.
-
 
     private void Start(){
 
-        // could probably make the event static so that 
-        // the event can be found without the use of 
-        // FindGameObjectWithTag
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>().healthChanged += UpdatePlayerHealthValue;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().playerDied += DeadPlayerReaction;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Gun>().reloadingStart += ShowReloadingText;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Gun>().reloadingEnd += HideReloadingText;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Gun>().ammoChanged += UpdatePlayerAmmoValue;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>().healthChanged += UpdatePlayerHealthValue;        
 
-        RetrievalObject.objectPickedUp += ShowPlayerPickUpText;
+        Gun.reloadingStart += ShowReloadingText;
+        Gun.reloadingEnd += HideReloadingText;
+        Gun.ammoChanged += UpdatePlayerAmmoValue;
+        PlayerMovement.playerDied += DeadPlayerReaction;
+        RetrievalObject.objectPickedUp += ShowObjectiveUI;
         SafeArea.missionComplete += showMissionCompleteText;
 
         SetupUI();
 
+        lerpPosition = 0.0f;
+        lerpDuration = 4.0f;
+        currentLerpTime = 0.0f;
+        objectiveDisplayTimer = 5.0f;
         originalColor = transparentPanel.color;
-        targetColor = new Color(0,0,0,1);
-        colorTransitioning = true;
+        targetColor = Color.black;
+        fading = false;
     }
 
     private void SetupUI(){
@@ -81,39 +82,42 @@ public class GameplayUI : MonoBehaviour{
         Cursor.visible = true;
     }
 
-    private void ShowPlayerPickUpText(){
-        progressUI.SetActive(true);
-        StartCoroutine(HideStatusText());
+    private void ShowObjectiveUI(){
+        objectiveUI.SetActive(true);
+        objectiveText.gameObject.SetActive(true);
+        StartCoroutine(HideObjectiveText());
     }
 
-    IEnumerator HideStatusText(){ 
-        yield return new WaitForSeconds(5.0f);
-        progressUI.SetActive(false);
+    IEnumerator HideObjectiveText(){ 
+        yield return new WaitForSeconds(objectiveDisplayTimer);
+        objectiveUI.SetActive(false);
     }
 
-    IEnumerator FadeToBlack() {       
+    IEnumerator FadeToBlack(){       
 
-        while(colorTransitioning) {
-            Debug.Log("Started");
+        fading = true;
+
+        while(fading) {
 
             currentLerpTime += Time.deltaTime;
 
-            if(currentLerpTime > lerpDuration){ 
-                currentLerpTime = lerpDuration;
-            }
+            if(currentLerpTime > lerpDuration) currentLerpTime = lerpDuration;
 
-            float lerpPosition = currentLerpTime / lerpDuration;            
+            lerpPosition = currentLerpTime / lerpDuration;            
 
             transparentPanel.color = Color.Lerp(originalColor, targetColor, lerpPosition);
 
-            if (Color.Equals(transparentPanel.color, targetColor)) colorTransitioning = false;
+            if (Color.Equals(transparentPanel.color, targetColor)) fading = false;
             yield return new WaitForEndOfFrame();
         }
+
+        // add trigger for end game actions here
+        // maybe send to menu or stat screen or something. 
     }
 
     private void showMissionCompleteText() {        
-        progressUI.SetActive(true);
-        variableStatusText.text = "You did it! Job well done!";
+        ShowObjectiveUI();
+        objectiveText.text = "You did it! Job well done!";
         StartCoroutine(FadeToBlack());
     }
 

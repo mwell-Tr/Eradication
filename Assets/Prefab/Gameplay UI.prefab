@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1452172766}
   m_Layer: 5
-  m_Name: Progress UI
+  m_Name: Objective UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.83137256}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1258,7 +1258,7 @@ GameObject:
   - component: {fileID: 8261285070201311296}
   - component: {fileID: 4134229359142539136}
   m_Layer: 5
-  m_Name: Status Text
+  m_Name: Objective Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,12 +1518,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aliveUI: {fileID: 8557996238942502711}
   deadUI: {fileID: 2142066678}
-  progressUI: {fileID: 1452172765}
-  transparentPanel: {fileID: 1892787579405889830}
+  objectiveUI: {fileID: 1452172765}
+  transparentUI: {fileID: 1892787579405889830}
   reloadingTxt: {fileID: 1697373711}
   healthDisplay: {fileID: 781665476}
   ammoDisplay: {fileID: 1462560595}
-  variableStatusText: {fileID: 4134229359142539136}
+  objectiveText: {fileID: 4134229359142539136}
+  transparentPanel: {fileID: 1535723525381645053}
 --- !u!1 &4535217980662190555
 GameObject:
   m_ObjectHideFlags: 0

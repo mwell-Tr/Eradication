@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
 // Responsible for the player controls and input
+// Consider renaming or restructuring.
+// class scope has grown a lot
 
 public class PlayerMovement : MonoBehaviour {
 
     public delegate void PlayerDied();
-    public event PlayerDied playerDied;
+    public static event PlayerDied playerDied;
 
     public float normalMoveSpeed;
     public float strafeMoveSpeed;
@@ -19,7 +21,6 @@ public class PlayerMovement : MonoBehaviour {
     private float gravity;
     private float currentDeltaTime;
     private float jumpVelocity;    
-    private bool shootGun;
     private bool allowedToMove;
     private bool PlayerAcquiredRetrievalObject;
 

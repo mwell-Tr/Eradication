@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  loot: {fileID: 0}
 --- !u!82 &8881470161498927506
 AudioSource:
   m_ObjectHideFlags: 0
