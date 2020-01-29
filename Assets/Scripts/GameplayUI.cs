@@ -35,7 +35,7 @@ public class GameplayUI : MonoBehaviour{
         Gun.reloadingEnd += HideReloadingText;
         Gun.ammoChanged += UpdatePlayerAmmoValue;
         PlayerMovement.playerDied += DeadPlayerReaction;
-        RetrievalObject.objectPickedUp += ShowObjectiveUI;
+        RetrievalObject.objectPickedUp += showMissionPickUpText;
         SafeArea.missionComplete += showMissionCompleteText;
 
         SetupUI();
@@ -47,6 +47,8 @@ public class GameplayUI : MonoBehaviour{
         originalColor = transparentPanel.color;
         targetColor = Color.black;
         fading = false;
+
+        showMissionStartText();
     }
 
     private void SetupUI(){
@@ -115,10 +117,21 @@ public class GameplayUI : MonoBehaviour{
         // maybe send to menu or stat screen or something. 
     }
 
+    private void showMissionStartText(){
+        ShowObjectiveUI();
+        objectiveText.text = "Go out there and find the super important gray cube. We need it if we are going to stop the invasion.";
+    }
+
     private void showMissionCompleteText() {        
         ShowObjectiveUI();
         objectiveText.text = "You did it! Job well done!";
         StartCoroutine(FadeToBlack());
+    }
+
+    private void showMissionPickUpText(){
+        ShowObjectiveUI();
+        objectiveText.text = "Great! You have the cube now. Bring it back to the drop zone and you will have saved humanity.";
+
     }
 
     public void RestartLevel(){

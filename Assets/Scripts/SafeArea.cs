@@ -8,9 +8,7 @@ public class SafeArea : MonoBehaviour{
     public static event MissionComplete missionComplete;
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
-
-            Debug.Log("Safe Area");
+        if (other.CompareTag("Player")) {            
 
             if (other.GetComponent<PlayerMovement>().hasPlayerAcquiredRetrievalObject() == true){
 
