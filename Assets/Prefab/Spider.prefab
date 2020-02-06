@@ -330,12 +330,12 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 180
-  m_StoppingDistance: 1
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3.7
-  m_BaseOffset: 0
+  m_Height: 3.77
+  m_BaseOffset: 0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &547440161
@@ -363,11 +363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd56c99a7eb1b141962986f4fd6756a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  DamageBox: {fileID: 998089046}
   maxAttackDistance: 4
   maxChaseDistnace: 70
   attackRate: 2
+  target: {fileID: 0}
+  DamageBox: {fileID: 998089046}
   loot: {fileID: 2475482662160038754, guid: 92d48be1a6fb23a4babd2d7cee35ef4c, type: 3}
 --- !u!82 &268134603
 AudioSource:

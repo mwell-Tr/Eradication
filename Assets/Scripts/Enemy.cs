@@ -40,7 +40,8 @@ public class Enemy : MonoBehaviour {
         distanceFromPlayer = 0;
         isChasing = false;
         active = true;       
-        DamageBox.SetActive(false);
+        DamageBox.SetActive(false);    
+        agent.avoidancePriority = Random.Range(0, 101);
 
         target = GameObject.FindGameObjectWithTag("Player");
 
@@ -48,7 +49,7 @@ public class Enemy : MonoBehaviour {
     }
 
     private IEnumerator PursueTarget() {
-
+        
         while (active) {
 
             if (target != null) {
@@ -95,14 +96,14 @@ public class Enemy : MonoBehaviour {
 
             } else if (isChasing == false) {
                 // wander to a random point
-                desriedWanderTargetPoint = (UnityEngine.Random.insideUnitSphere * wanderDistance) + transform.position;
+                desriedWanderTargetPoint = (UnityEngine.Random.insideUnitSphere * wanderDistance) + transform.position;                
                 NavMesh.SamplePosition(desriedWanderTargetPoint, out navMeshHit, wanderDistance, -1);
                 animator.SetBool("Idle", false);
                 agent.SetDestination(navMeshHit.position);
 
                 // would like to find alternatives to updating Vector3.Distance and maintaing the same functionality
 
-                if(active) yield return new WaitUntil(() => agent.remainingDistance < 0.5f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
+                if(active) yield return new WaitUntil(() => agent.remainingDistance < 3.5f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
             }
         }
     }
