@@ -42,6 +42,8 @@ public class Gun : MonoBehaviour {
         }else {
             targetPoint = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1000));
         }
+
+        // transform.LookAt(targetPoint);
     }
 
     private void OnDrawGizmosSelected() {
@@ -69,8 +71,9 @@ public class Gun : MonoBehaviour {
     private void SpawnProjectile(){
         newProjectile = Instantiate(projectile, barrelPoint.transform.position, Quaternion.identity);
         newProjectile.GetComponent<Projectile>().setGunData(data);
-        newProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * data.TravelSpeed, ForceMode.Force);
         newProjectile.transform.LookAt(targetPoint);
+        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * data.TravelSpeed, ForceMode.Impulse);
+        
         currentBullets -= 1;
         if(ammoChanged != null) ammoChanged(currentBullets);        
         audioSource.Play();        

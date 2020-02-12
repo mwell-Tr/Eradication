@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   Damage: 33
-  TravelSpeed: 375
+  TravelSpeed: 2
   AmmoCapacity: 50
   ReloadTime: 2
   FireRate: 0.09

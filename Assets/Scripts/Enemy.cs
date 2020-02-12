@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour {
         agent.avoidancePriority = Random.Range(0, 101);
 
         target = GameObject.FindGameObjectWithTag("Player");
+        
 
         StartCoroutine("PursueTarget");
     }
@@ -75,6 +76,7 @@ public class Enemy : MonoBehaviour {
             if (isChasing == true) {
                 // chasing the target
                 agent.SetDestination(target.transform.position);
+                transform.LookAt(target.transform.position);
 
                 if (distanceFromPlayer < maxAttackDistance) {
                     // within attack radius
@@ -102,8 +104,8 @@ public class Enemy : MonoBehaviour {
                 agent.SetDestination(navMeshHit.position);
 
                 // would like to find alternatives to updating Vector3.Distance and maintaing the same functionality
-
-                if(active) yield return new WaitUntil(() => agent.remainingDistance < 3.5f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
+                
+                if(active) yield return new WaitUntil(() => agent.remainingDistance < 20f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
             }
         }
     }
