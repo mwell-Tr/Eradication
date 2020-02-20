@@ -48,9 +48,9 @@ public class PlayerMovement : MonoBehaviour {
         UpdateRotation();
         if(allowedToMove) MovePlayer();
 
-        if (Input.GetKey(KeyCode.LeftControl)) gun.PullTrigger();
-        if (Input.GetKeyUp(KeyCode.LeftControl)) gun.ReleaseTrigger();
-        if (Input.GetKeyDown(KeyCode.R)) gun.Reload();
+        if (Input.GetAxis("Fire1") > 0) gun.PullTrigger();
+        if (Input.GetAxis("Fire1") < 1) gun.ReleaseTrigger();
+        if (Input.GetAxis("Reload") > 0) gun.Reload();
     }
 
     private void UpdateInputValues() {

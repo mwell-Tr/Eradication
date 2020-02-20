@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAttackDistance: 4
-  maxChaseDistnace: 70
+  maxChaseDistnace: 240
   attackRate: 2
   target: {fileID: 0}
   DamageBox: {fileID: 998089046}
