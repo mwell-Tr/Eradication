@@ -5,6 +5,7 @@
 public class Projectile : MonoBehaviour {
 
     private GunData data;
+    private GameObject owner;
 
     public void Start() {        
         Destroy(gameObject, 5.0f);
@@ -13,12 +14,18 @@ public class Projectile : MonoBehaviour {
     public void OnCollisionEnter(Collision collision) {        
 
         if (collision.gameObject.GetComponent<Damageable>() != null) {
-            collision.gameObject.GetComponent<Damageable>().TakeDamage(data.Damage);
-            Destroy(gameObject);
+            if (collision.gameObject != owner){
+                collision.gameObject.GetComponent<Damageable>().TakeDamage(data.Damage);
+                Destroy(gameObject);
+            }            
         }
     }
 
     public void setGunData(GunData newData){ 
         data = newData;
+    }
+
+    public void setOwner(GameObject newOwner){ 
+        owner = newOwner;
     }
 }

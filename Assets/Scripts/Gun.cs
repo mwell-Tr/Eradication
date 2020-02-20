@@ -71,9 +71,9 @@ public class Gun : MonoBehaviour {
     private void SpawnProjectile(){
         newProjectile = Instantiate(projectile, barrelPoint.transform.position, Quaternion.identity);
         newProjectile.GetComponent<Projectile>().setGunData(data);
+        newProjectile.GetComponent<Projectile>().setOwner(gameObject);
         newProjectile.transform.LookAt(targetPoint);
-        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * data.TravelSpeed, ForceMode.Impulse);
-        
+        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * data.TravelSpeed, ForceMode.Impulse);        
         currentBullets -= 1;
         if(ammoChanged != null) ammoChanged(currentBullets);        
         audioSource.Play();        
