@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
     private float currentDeltaTime;
     private float jumpVelocity;    
     private bool allowedToMove;
+    private bool allowedToShoot;
     private bool PlayerAcquiredRetrievalObject;
 
     private Gun gun;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour {
         gravity = 200.0f;
         jumpVelocity = 0f;
         allowedToMove = true;
+        allowedToShoot = true;
         PlayerAcquiredRetrievalObject = false;
     }
 
@@ -46,11 +48,13 @@ public class PlayerMovement : MonoBehaviour {
 
         UpdateInputValues();
         UpdateRotation();
-        if(allowedToMove) MovePlayer();
+        if (allowedToMove) MovePlayer();
 
-        if (Input.GetAxis("Fire1") > 0) gun.PullTrigger();
-        if (Input.GetAxis("Fire1") < 1) gun.ReleaseTrigger();
-        if (Input.GetAxis("Reload") > 0) gun.Reload();
+        if (allowedToShoot) {
+            if (Input.GetAxis("Fire1") > 0) gun.PullTrigger();
+            if (Input.GetAxis("Fire1") < 1) gun.ReleaseTrigger();
+            if (Input.GetAxis("Reload") > 0) gun.Reload();
+        }
     }
 
     private void UpdateInputValues() {
@@ -101,6 +105,7 @@ public class PlayerMovement : MonoBehaviour {
     private void StartDeath(){        
         if (playerDied != null) playerDied();        
         allowedToMove = false;
+        allowedToShoot = false;
     }
 
     private void consumePlayerPickUp(){
