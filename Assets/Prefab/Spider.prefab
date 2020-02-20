@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998089046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 4.1100006}
+  m_LocalPosition: {x: 0, y: 0.48, z: 3.88}
   m_LocalScale: {x: 1.7867, y: 1, z: 2.5270615}
   m_Children: []
   m_Father: {fileID: 3039562094388185877}
@@ -56,7 +56,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2}
+  m_Size: {x: 2.25, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1 &3039562094388680433
 GameObject:
@@ -330,9 +330,9 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 180
-  m_StoppingDistance: 3
+  m_StoppingDistance: 27
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 3.77
   m_BaseOffset: 0.25
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd56c99a7eb1b141962986f4fd6756a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttackDistance: 4
+  maxAttackDistance: 25
   maxChaseDistnace: 240
   attackRate: 2
   target: {fileID: 0}

@@ -77,10 +77,12 @@ public class Enemy : MonoBehaviour {
                 // chasing the target
                 agent.SetDestination(target.transform.position);
                 transform.LookAt(target.transform.position);
+                agent.isStopped = false;
 
                 if (distanceFromPlayer < maxAttackDistance) {
                     // within attack radius
 
+                    agent.isStopped = true;
                     animator.SetBool("Attacking", true);
                     DamageBox.SetActive(true);
 
@@ -105,7 +107,7 @@ public class Enemy : MonoBehaviour {
 
                 // would like to find alternatives to updating Vector3.Distance and maintaing the same functionality
                 
-                if(active) yield return new WaitUntil(() => agent.remainingDistance < 20f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
+                if(active) yield return new WaitUntil(() => agent.remainingDistance < 27f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
             }
         }
     }
