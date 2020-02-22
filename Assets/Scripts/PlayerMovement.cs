@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 // Responsible for the player controls and input
 // Consider renaming or restructuring.
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     public float strafeMoveSpeed;
     public float jumpForce;
 
+    private float moveSpeedMultiplier; 
     private float verticalInput;
     private float horizontalInput;
     private float mouseXInput;
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
         cc = gameObject.GetComponent<CharacterController>();
         gun = gameObject.GetComponent<Gun>();
         mainCamera = Camera.main;
+        moveSpeedMultiplier = 1.5f;
         gravity = 200.0f;
         jumpVelocity = 0f;
         allowedToMove = true;
@@ -95,10 +98,19 @@ public class PlayerMovement : MonoBehaviour {
         cc.Move(directionToMove * currentDeltaTime);
     }
 
+    IEnumerator ModifyMoveSpeed(){ 
+
+        normalMoveSpeed = normalMoveSpeed * moveSpeedMultiplier;
+                
+        yield return new WaitForSeconds(5.0f);
+
+        normalMoveSpeed = normalMoveSpeed / moveSpeedMultiplier;
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit) {
 
         if(hit.gameObject.CompareTag("Loot")){
-            hit.gameObject.GetComponent<Loot>().ProcessEffect(this);            
+            hit.gameObject.GetComponent<Loot>().ProcessEffect(gameObject);            
         }
     }
 

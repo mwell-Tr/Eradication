@@ -135,11 +135,6 @@ public class GameplayUI : MonoBehaviour{
     }
 
     public void RestartLevel(){
-        Debug.Log("I have been clicked");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Test(){
-        Debug.Log("I have been clicked test");
     }
 }

@@ -368,7 +368,9 @@ MonoBehaviour:
   attackRate: 2
   target: {fileID: 0}
   DamageBox: {fileID: 998089046}
-  loot: {fileID: 2475482662160038754, guid: 92d48be1a6fb23a4babd2d7cee35ef4c, type: 3}
+  possibleLoot:
+  - {fileID: 4863438332761755071, guid: c0edfa65c6f2108419bfa85a8a8b6052, type: 3}
+  - {fileID: 4863438332761755071, guid: 7e0116ec2970be5498dcb5b79d34a521, type: 3}
 --- !u!82 &268134603
 AudioSource:
   m_ObjectHideFlags: 0

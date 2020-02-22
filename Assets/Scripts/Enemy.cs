@@ -11,6 +11,8 @@ using UnityEngine.AI;
 // already work witout needing an event to trigger it
 
 public class Enemy : MonoBehaviour {
+
+    
     
     public float maxAttackDistance;
     public float maxChaseDistnace;
@@ -18,12 +20,15 @@ public class Enemy : MonoBehaviour {
 
     public GameObject target;
     public GameObject DamageBox;
-    public GameObject loot;
+    public GameObject[] possibleLoot;
     
+    private int randomLootIndex;
     private float distanceFromPlayer;
     private float wanderDistance;
     private bool isChasing;
     private bool active;
+
+    private static int rngBase;
 
     private NavMeshAgent agent;
     private NavMeshHit navMeshHit;
@@ -36,7 +41,9 @@ public class Enemy : MonoBehaviour {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         
+        randomLootIndex = Random.Range(0, possibleLoot.Length);
         wanderDistance = Random.Range(25.0f, 75.0f);
+        rngBase = 72;
         distanceFromPlayer = 0;
         isChasing = false;
         active = true;       
@@ -123,11 +130,10 @@ public class Enemy : MonoBehaviour {
             animator.SetBool("Alive", false);
             audioSource.Play();
 
-            // Could optimize here with batch pooling
-            // also consider using a dedicated point or
-            // continuour to use a dedicated point based on the 
-            // spiders current location.
-            Instantiate(loot, new Vector3(transform.position.x, transform.position.y + 15, transform.position.z), Quaternion.identity);
+            if(rngBase < Random.Range(0, 101)){
+                Instantiate(possibleLoot[randomLootIndex], new Vector3(transform.position.x, transform.position.y + 15, transform.position.z), Quaternion.identity);
+            }
+            
             Destroy(gameObject, 3.0f);
         }
     }

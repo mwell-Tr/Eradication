@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun 2
   m_EditorClassIdentifier: 
   mode: 0
-  Damage: 5
+  Damage: 25
   TravelSpeed: 0
   AmmoCapacity: 0
   ReloadTime: 0
