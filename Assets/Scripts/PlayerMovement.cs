@@ -66,8 +66,8 @@ public class PlayerMovement : MonoBehaviour {
 
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        mouseXInput = Input.GetAxis("Mouse X");
-        mouseYInput = Input.GetAxis("Mouse Y");
+        mouseXInput = Input.GetAxis("Rotate X");
+        mouseYInput = Input.GetAxis("Rotate Y");
         jumpInput = Input.GetAxis("Jump");
     }
 
