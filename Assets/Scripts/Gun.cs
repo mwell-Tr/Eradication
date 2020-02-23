@@ -32,8 +32,7 @@ public class Gun : MonoBehaviour {
         canShoot = true;
         currentBullets = data.AmmoCapacity;
 
-        audioSource = GetComponent<AudioSource>();        
-        audioSource.clip = data.FireSound;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {        
@@ -75,14 +74,23 @@ public class Gun : MonoBehaviour {
         newProjectile.transform.LookAt(targetPoint);
         newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * data.TravelSpeed, ForceMode.Impulse);        
         currentBullets -= 1;
-        if(ammoChanged != null) ammoChanged(currentBullets);        
+        if(ammoChanged != null) ammoChanged(currentBullets);
+        audioSource.clip = data.FireSound;
+        audioSource.volume = 0.25f;
         audioSource.Play();        
     }
 
     public void PullTrigger(){
         // setup stuff
 
-        if(currentBullets < 1) return;
+        // need to find an efficient way to only go through this check only once for every trigger pull
+        if(currentBullets < 1){
+            audioSource.clip = data.DryFireSound;
+            audioSource.volume = 1.0f;
+            audioSource.Play();
+            canShoot = false;
+            return;
+        } 
         if(isReloading) return;
         ShootWeapon();
     }

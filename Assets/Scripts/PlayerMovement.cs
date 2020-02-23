@@ -12,13 +12,15 @@ public class PlayerMovement : MonoBehaviour {
 
     public float normalMoveSpeed;
     public float strafeMoveSpeed;
+    public float rotationXSpeed;
+    public float rotationYSpeed;
     public float jumpForce;
 
     private float moveSpeedMultiplier; 
     private float verticalInput;
     private float horizontalInput;
-    private float mouseXInput;
-    private float mouseYInput;
+    private float rotationXInput;
+    private float rotationYInput;
     private float jumpInput;
     private float gravity;
     private float currentDeltaTime;
@@ -66,15 +68,15 @@ public class PlayerMovement : MonoBehaviour {
 
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        mouseXInput = Input.GetAxis("Rotate X");
-        mouseYInput = Input.GetAxis("Rotate Y");
+        rotationXInput = Input.GetAxis("Rotate X");
+        rotationYInput = Input.GetAxis("Rotate Y");
         jumpInput = Input.GetAxis("Jump");
     }
 
     private void UpdateRotation() {
-        transform.Rotate(0, mouseXInput, 0);
 
-        mainCamera.transform.Rotate(-mouseYInput, 0, 0);
+        transform.Rotate(0, (rotationXInput * Time.deltaTime) * rotationXSpeed, 0);
+        mainCamera.transform.Rotate((rotationYInput * Time.deltaTime) * rotationYSpeed, 0, 0);
     }
 
     private void MovePlayer() {

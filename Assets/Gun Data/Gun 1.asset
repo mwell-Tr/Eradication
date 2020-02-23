@@ -19,3 +19,4 @@ MonoBehaviour:
   ReloadTime: 2
   FireRate: 0.09
   FireSound: {fileID: 8300000, guid: 4d6281aa604094f04839cffa502096c0, type: 3}
+  DryFireSound: {fileID: 8300000, guid: f29148cb0376a784f89a0912bb11605c, type: 3}
