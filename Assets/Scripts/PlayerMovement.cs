@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour {
     private Camera mainCamera;
     private CharacterController cc;
     private Vector3 directionToMove;
+    private Vector3 myRotation;
 
     private void Start() {
 
@@ -76,7 +77,10 @@ public class PlayerMovement : MonoBehaviour {
     private void UpdateRotation() {
 
         transform.Rotate(0, (rotationXInput * Time.deltaTime) * rotationXSpeed, 0);
-        mainCamera.transform.Rotate((rotationYInput * Time.deltaTime) * rotationYSpeed, 0, 0);
+        mainCamera.transform.Rotate((rotationYInput * Time.deltaTime) * rotationYSpeed, (rotationXInput * Time.deltaTime) * rotationXSpeed, 0);
+        myRotation = mainCamera.transform.rotation.eulerAngles;
+        myRotation.z = 0;
+        mainCamera.transform.rotation = Quaternion.Euler(myRotation);
     }
 
     private void MovePlayer() {
