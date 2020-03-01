@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd56c99a7eb1b141962986f4fd6756a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttackDistance: 25
+  maxAttackDistance: 20
   maxChaseDistnace: 240
   attackRate: 2
   target: {fileID: 0}

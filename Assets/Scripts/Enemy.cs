@@ -10,9 +10,7 @@ using UnityEngine.AI;
 // only realy benefit is to go back to wandering but it may
 // already work witout needing an event to trigger it
 
-public class Enemy : MonoBehaviour {
-
-    
+public class Enemy : MonoBehaviour {    
     
     public float maxAttackDistance;
     public float maxChaseDistnace;
@@ -114,7 +112,7 @@ public class Enemy : MonoBehaviour {
 
                 // would like to find alternatives to updating Vector3.Distance and maintaing the same functionality
                 
-                if(active) yield return new WaitUntil(() => agent.remainingDistance < 27f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
+                if(active) yield return new WaitUntil(() => agent.remainingDistance < 10.0f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
             }
         }
     }
@@ -125,6 +123,7 @@ public class Enemy : MonoBehaviour {
         if(active == true){
             StopCoroutine("PursueTarget");
 
+            DamageBox.SetActive(false);
             active = false;            
             agent.isStopped = true;
             animator.SetBool("Alive", false);
@@ -134,7 +133,7 @@ public class Enemy : MonoBehaviour {
                 Instantiate(possibleLoot[randomLootIndex], new Vector3(transform.position.x, transform.position.y + 15, transform.position.z), Quaternion.identity);
             }
             
-            Destroy(gameObject, 3.0f);
+            Destroy(gameObject, 1.5f);
         }
     }
 }
