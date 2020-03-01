@@ -426,7 +426,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.67343104
+        functionName: TurnOnDamageBox
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: bbd56c99a7eb1b141962986f4fd6756a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8238689
+        functionName: TurnOffDamageBox
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: bbd56c99a7eb1b141962986f4fd6756a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

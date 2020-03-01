@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour {
     private void Start() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();        
         
         randomLootIndex = Random.Range(0, possibleLoot.Length);
         wanderDistance = Random.Range(25.0f, 75.0f);
@@ -89,14 +89,11 @@ public class Enemy : MonoBehaviour {
 
                     agent.isStopped = true;
                     animator.SetBool("Attacking", true);
-                    DamageBox.SetActive(true);
 
                     // important to find a balanced number 
                     // too long will cause extra animation loops to play
                     // too short will cause more damage to trigger
                     yield return new WaitForSeconds(attackRate);
-
-                    DamageBox.SetActive(false);
                     animator.SetBool("Attacking", false);
                     animator.SetBool("Chasing", true);
                 }
@@ -115,6 +112,14 @@ public class Enemy : MonoBehaviour {
                 if(active) yield return new WaitUntil(() => agent.remainingDistance < 10.0f || Vector3.Distance(transform.position, target.transform.position) < maxChaseDistnace);
             }
         }
+    }
+
+    public void TurnOnDamageBox(){ 
+        DamageBox.SetActive(true);
+    }
+
+    public void TurnOffDamageBox() {
+        DamageBox.SetActive(false);
     }
 
     // modify values to prepare for death animation and the destroying of the game object
